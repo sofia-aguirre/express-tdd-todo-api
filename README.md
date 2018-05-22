@@ -49,9 +49,7 @@ nodemon
 
 Finally, _open a new teminal tab/window_, and run the test suite (you'll need to switch back and forth between your server output and your test output a lot):
 ``` bash
-mocha test/todosTest.js
-# or just
-mocha
+npm run test
 ```
 
 > Your server _must_ be running in order for the Mocha tests to be able to make API requests to your API endpoints.

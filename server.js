@@ -28,7 +28,7 @@ let todos = [
  * HTML Endpoints
  */
 
-app.get('/',  homepage(req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
