@@ -1,5 +1,5 @@
 // require express and other modules
-var express = require('express'),
+const express = require('express'),
     app = express(),
     bodyParser = require('body-parser');
 
@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/public'));
  ************/
 
 // our database is an array for now with some hardcoded values
-var todos = [
+let todos = [
   { _id: 7, task: 'Laundry', description: 'Wash clothes' },
   { _id: 27, task: 'Grocery Shopping', description: 'Buy dinner for this week' },
   { _id: 44, task: 'Homework', description: 'Make this app super awesome!' }
@@ -28,7 +28,7 @@ var todos = [
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
+app.get('/',  homepage(req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -43,37 +43,43 @@ app.get('/', function homepage(req, res) {
  * ORDER THAT THE TESTS DICTATE.
  */
 
-app.get('/api/todos/search', function search(req, res) {
+// Search
+app.get('/api/todos/search', (req, res) => {
   /* This endpoint responds with the search results from the
    * query in the request. COMPLETE THIS ENDPOINT LAST.
    */
 });
 
-app.get('/api/todos', function index(req, res) {
+// Index
+app.get('/api/todos', (req, res) => {
   /* This endpoint responds with all of the todos
    */
 });
 
-app.post('/api/todos', function create(req, res) {
+// Create
+app.post('/api/todos', (req, res) => {
   /* This endpoint will add a todo to our "database"
    * and respond with the newly created todo.
    */
 });
 
-app.get('/api/todos/:id', function show(req, res) {
+// Show
+app.get('/api/todos/:id', (req, res) => {
   /* This endpoint will return a single todo with the
    * id specified in the route parameter (:id)
    */
 });
 
-app.put('/api/todos/:id', function update(req, res) {
+// Update
+app.put('/api/todos/:id', (req, res) => {
   /* This endpoint will update a single todo with the
    * id specified in the route parameter (:id) and respond
    * with the newly updated todo.
    */
 });
 
-app.delete('/api/todos/:id', function destroy(req, res) {
+// Destroy
+app.delete('/api/todos/:id', (req, res) => {
   /* This endpoint will delete a single todo with the
    * id specified in the route parameter (:id) and respond
    * with success.
@@ -85,6 +91,6 @@ app.delete('/api/todos/:id', function destroy(req, res) {
  **********/
 
 // listen on port 3000
-app.listen(3000, function() {
+app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
