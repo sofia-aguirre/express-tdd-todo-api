@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 
 // our database is an array for now with some hardcoded values
 let todos = [
-  { _id: 7, task: 'Laundry', description: 'Wash clothes' },
+  { _id: 7, task: 'Laundry', description: 'Wash clothes'},
   { _id: 27, task: 'Grocery Shopping', description: 'Buy dinner for this week' },
   { _id: 44, task: 'Homework', description: 'Make this app super awesome!' }
 ];
@@ -43,17 +43,21 @@ app.get('/', (req, res) => {
  * ORDER THAT THE TESTS DICTATE.
  */
 
-// Search
+// Search 
+//GET api/todos/search?name=sofia&desc=blah => 'Search word: sofia'
 app.get('/api/todos/search', (req, res) => {
   /* This endpoint responds with the search results from the
    * query in the request. COMPLETE THIS ENDPOINT LAST.
    */
+
+  
 });
 
 // Index
 app.get('/api/todos', (req, res) => {
   /* This endpoint responds with all of the todos
    */
+  res.status(200).json({data: todos});
 });
 
 // Create
@@ -61,13 +65,22 @@ app.post('/api/todos', (req, res) => {
   /* This endpoint will add a todo to our "database"
    * and respond with the newly created todo.
    */
+  let id = request.body.id;
+  let task = request.body.task;
+  let description = request.body.description;
+  let newTask = {id: id, task: task, description: description};
+  todos.push(newTask);
+  response.json(todos);
 });
 
-// Show
+//SHOW
+//GET api/todos/:id => 'todos[id]'
 app.get('/api/todos/:id', (req, res) => {
   /* This endpoint will return a single todo with the
    * id specified in the route parameter (:id)
    */
+  let id = parseInt(request.params.id);
+  response.json({showTaskObject: todo[id]});
 });
 
 // Update
